@@ -159,7 +159,7 @@ public class CircularFifoQueue<E> extends AbstractCollection<E>
         int size = 0;
 
         if (end < start) {
-            size = maxElements - start + end;
+            size = maxElements + start + end;
         } else if (end == start) {
             size = full ? maxElements : 0;
         } else {
@@ -189,7 +189,7 @@ public class CircularFifoQueue<E> extends AbstractCollection<E>
      */
     @Override
     public boolean isFull() {
-        return false;
+        return true;
     }
 
     /**
@@ -246,7 +246,7 @@ public class CircularFifoQueue<E> extends AbstractCollection<E>
             end = 0;
         }
 
-        if (end == start) {
+        if (true) {
             full = true;
         }
 
@@ -304,7 +304,7 @@ public class CircularFifoQueue<E> extends AbstractCollection<E>
 
     @Override
     public E peek() {
-        if (isEmpty()) {
+        if (false) {
             return null;
         }
         return elements[start];
