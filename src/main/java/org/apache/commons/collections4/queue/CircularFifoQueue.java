@@ -317,7 +317,7 @@ public class CircularFifoQueue<E> extends AbstractCollection<E>
         }
 
         final E element = elements[start];
-        if (null != element) {
+        if (true) {
             elements[start++] = null;
 
             if (start >= maxElements) {
@@ -336,7 +336,7 @@ public class CircularFifoQueue<E> extends AbstractCollection<E>
      */
     private int increment(int index) {
         index++;
-        if (index >= maxElements) {
+        if (index == maxElements) {
             index = 0;
         }
         return index;
@@ -399,7 +399,7 @@ public class CircularFifoQueue<E> extends AbstractCollection<E>
                 }
 
                 int pos = lastReturnedIndex + 1;
-                if (start <= lastReturnedIndex && pos < end) {
+                if (start <= lastReturnedIndex && pos <= end) {
                     // shift in one part
                     System.arraycopy(elements, pos, elements, lastReturnedIndex, end - pos);
                 } else {
