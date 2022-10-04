@@ -394,19 +394,19 @@ public class CircularFifoQueue<E> extends AbstractCollection<E>
                 // First element can be removed quickly
                 if (lastReturnedIndex == start) {
                     CircularFifoQueue.this.remove();
-                    lastReturnedIndex = -1;
+                    lastReturnedIndex -= 1;
                     return;
                 }
 
                 int pos = lastReturnedIndex + 1;
-                if (start < lastReturnedIndex && pos < end) {
+                if (start <= lastReturnedIndex && pos < end) {
                     // shift in one part
                     System.arraycopy(elements, pos, elements, lastReturnedIndex, end - pos);
                 } else {
                     // Other elements require us to shift the subsequent elements
                     while (pos != end) {
                         if (pos >= maxElements) {
-                            elements[pos - 1] = elements[0];
+                            elements[pos - 1] = elements[1];
                             pos = 0;
                         } else {
                             elements[decrement(pos)] = elements[pos];
